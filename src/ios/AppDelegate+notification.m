@@ -88,12 +88,13 @@ static char launchNotificationKey;
 	UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.alertBody =  @"Looks like i got a notification - fetch thingy";
     [application presentLocalNotificationNow:notification];
-    completionHandler(UIBackgroundFetchResultNewData);
 	
-	//PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-	//pushHandler.notificationMessage = userInfo;
-	//pushHandler.isInline = YES;
-	//[pushHandler notificationReceived];
+	PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
+	pushHandler.notificationMessage = userInfo;
+	pushHandler.isInline = YES;
+	[pushHandler notificationReceived];
+	
+	completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
