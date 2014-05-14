@@ -81,6 +81,15 @@ static char launchNotificationKey;
         self.launchNotification = userInfo;
     }
 }
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+
+    NSLog(@"didReceiveSilentNotification");
+    
+	PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
+	pushHandler.notificationMessage = userInfo;
+	pushHandler.isInline = YES;
+	[pushHandler notificationReceived];
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
