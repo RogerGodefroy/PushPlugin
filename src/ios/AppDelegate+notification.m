@@ -81,9 +81,9 @@ static char launchNotificationKey;
         self.launchNotification = userInfo;
     }
 }
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
-    NSLog(@"didReceiveSilentNotification");
+    //NSLog(@"didReceiveSilentNotification");
     
 	PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
 	pushHandler.notificationMessage = userInfo;
