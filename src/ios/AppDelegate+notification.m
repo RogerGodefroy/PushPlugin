@@ -85,10 +85,15 @@ static char launchNotificationKey;
 
     //NSLog(@"didReceiveSilentNotification");
     
-	PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-	pushHandler.notificationMessage = userInfo;
-	pushHandler.isInline = YES;
-	[pushHandler notificationReceived];
+	UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody =  @"Looks like i got a notification - fetch thingy";
+    [application presentLocalNotificationNow:notification];
+    completionHandler(UIBackgroundFetchResultNewData);
+	
+	//PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
+	//pushHandler.notificationMessage = userInfo;
+	//pushHandler.isInline = YES;
+	//[pushHandler notificationReceived];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
